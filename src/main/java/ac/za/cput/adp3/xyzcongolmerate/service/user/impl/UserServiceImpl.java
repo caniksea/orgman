@@ -9,14 +9,14 @@ import java.util.Set;
 
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private static UserService userService = null;
+    private UserRepositoryImpl userRepository;
+    private static UserServiceImpl userService = null;
 
     private UserServiceImpl() {
         this.userRepository = UserRepositoryImpl.getUserRepository();
     }
 
-    public static UserService getUserService() {
+    public static UserServiceImpl getUserService() {
         if (userService == null) userService = new UserServiceImpl();
         return userService;
     }

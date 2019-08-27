@@ -30,7 +30,7 @@ public class Role {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String roleId, roleName;
 
         public Builder roleId(String roleId) {

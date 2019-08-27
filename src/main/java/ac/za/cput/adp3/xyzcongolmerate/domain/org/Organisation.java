@@ -30,7 +30,7 @@ public class Organisation {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String orgCode, orgName;
 
         public Builder orgCode(String orgCode) {

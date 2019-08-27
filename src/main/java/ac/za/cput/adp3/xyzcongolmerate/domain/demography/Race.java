@@ -30,7 +30,7 @@ public class Race {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String raceId, raceDescription;
 
         public Builder raceId(String raceId) {

@@ -30,7 +30,7 @@ public class Gender {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String genderId, genderDescription;
 
         public Builder genderId(String genderId) {

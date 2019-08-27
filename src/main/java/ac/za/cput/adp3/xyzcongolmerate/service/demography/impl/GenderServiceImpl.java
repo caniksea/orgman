@@ -10,13 +10,13 @@ import java.util.Set;
 public class GenderServiceImpl implements GenderService {
 
     private GenderRepository genderRepository;
-    private static GenderService genderService = null;
+    private static GenderServiceImpl genderService = null;
 
     private GenderServiceImpl() {
         this.genderRepository = GenderRepositoryImpl.genderRepository();
     }
 
-    public GenderService getGenderService() {
+    public static GenderServiceImpl getGenderService() {
         if (genderService == null) genderService = new GenderServiceImpl();
         return genderService;
     }

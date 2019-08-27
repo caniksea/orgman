@@ -2,20 +2,21 @@ package ac.za.cput.adp3.xyzcongolmerate.service.org.impl;
 
 import ac.za.cput.adp3.xyzcongolmerate.domain.org.Organisation;
 import ac.za.cput.adp3.xyzcongolmerate.repository.org.OrganisationRepository;
+import ac.za.cput.adp3.xyzcongolmerate.repository.org.impl.OrganisationRepositoryImpl;
 import ac.za.cput.adp3.xyzcongolmerate.service.org.OrganisationService;
 
 import java.util.Set;
 
 public class OrganisationServiceImpl implements OrganisationService {
 
-    private OrganisationRepository organisationRepository;
-    private static OrganisationService organisationService = null;
+    private OrganisationRepositoryImpl organisationRepository;
+    private static OrganisationServiceImpl organisationService = null;
 
     private OrganisationServiceImpl() {
-        this.organisationRepository = null;
+        this.organisationRepository =OrganisationRepositoryImpl.getOrganisationRepository();
     }
 
-    public OrganisationService getOrganisationService() {
+    public static OrganisationServiceImpl getOrganisationService() {
         if (organisationService == null) organisationService = new OrganisationServiceImpl();
         return organisationService;
     }

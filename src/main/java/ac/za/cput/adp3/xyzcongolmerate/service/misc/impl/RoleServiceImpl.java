@@ -10,13 +10,13 @@ import java.util.Set;
 public class RoleServiceImpl implements RoleService {
 
     private RoleRepository roleRepository;
-    private static RoleService roleService = null;
+    private static RoleServiceImpl roleService = null;
 
     private RoleServiceImpl() {
         this.roleRepository = RoleRepositoryImpl.getRoleRepository();
     }
 
-    public static RoleService getRoleService() {
+    public static RoleServiceImpl getRoleService() {
         if (roleService == null) roleService = new RoleServiceImpl();
         return roleService;
     }

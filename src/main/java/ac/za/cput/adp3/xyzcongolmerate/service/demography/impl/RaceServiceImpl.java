@@ -10,13 +10,13 @@ import java.util.Set;
 public class RaceServiceImpl implements RaceService {
 
     private RaceRepository raceRepository;
-    private static RaceService raceService = null;
+    private static RaceServiceImpl raceService = null;
 
     private RaceServiceImpl() {
         this.raceRepository = RaceRepositoryImpl.getRaceRepository();
     }
 
-    public static RaceService getRaceService() {
+    public static RaceServiceImpl getRaceService() {
         if (raceService == null) raceService = new RaceServiceImpl();
         return raceService;
     }

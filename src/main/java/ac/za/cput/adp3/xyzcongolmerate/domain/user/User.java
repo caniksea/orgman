@@ -36,7 +36,7 @@ public class User {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String userEmail, firstName, lastName;
 
         public Builder userEmail(String userEmail) {

@@ -1,5 +1,6 @@
 package ac.za.cput.adp3.xyzcongolmerate.repository.org.impl;
 
+import ac.za.cput.adp3.xyzcongolmerate.domain.misc.Role;
 import ac.za.cput.adp3.xyzcongolmerate.domain.org.Organisation;
 import ac.za.cput.adp3.xyzcongolmerate.repository.org.OrganisationRepository;
 
@@ -9,44 +10,65 @@ import java.util.Set;
 public class OrganisationRepositoryImpl implements OrganisationRepository {
 
     private Set<Organisation> organisationDB;
-    private static OrganisationRepository organisationRepository = null;
+    private static OrganisationRepositoryImpl organisationRepository = null;
 
     private OrganisationRepositoryImpl() {
         this.organisationDB = new HashSet<>();
     }
 
-    public static OrganisationRepository getOrganisationRepository() {
+    public static OrganisationRepositoryImpl getOrganisationRepository() {
         if (organisationRepository == null) organisationRepository = new OrganisationRepositoryImpl();
         return organisationRepository;
     }
 
-    //TODO: Implement body
     @Override
     public Organisation create(Organisation organisation) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Organisation org=findGender(organisation.getOrgCode());
+        if(org==null){
+            organisationDB.add(organisation);
+            return organisation;
+        }return null;
+
     }
 
-    //TODO: Implement body
+
     @Override
     public Organisation read(String orgCode) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         return findGender(orgCode);
     }
 
-    //TODO: Implement body
+
     @Override
     public Organisation update(Organisation organisation) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Organisation org=findGender(organisation.getOrgCode());
+        if(org!=null){
+            organisationDB.remove(org);
+            create(organisation);
+            return organisation;
+        }
+        return null;
     }
 
     //TODO: Implement body
     @Override
     public void delete(String orgCode) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Organisation org=findGender(orgCode);
+        if(org!=null){
+            organisationDB.remove(org);
+        }
+
     }
 
     //TODO: Implement body
     @Override
     public Set<Organisation> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return organisationDB;
+    }
+
+    public Organisation findGender(String id){
+        return organisationDB.stream()
+                .filter(gen -> gen.getOrgCode().equals(id))
+                .findAny()
+                .orElse(null);
     }
 }

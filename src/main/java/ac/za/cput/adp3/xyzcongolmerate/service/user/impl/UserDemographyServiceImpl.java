@@ -10,13 +10,13 @@ import java.util.Set;
 public class UserDemographyServiceImpl implements UserDemographyService {
 
     private UserDemographyRepository userDemographyRepository;
-    private static UserDemographyService userDemographyService = null;
+    private static UserDemographyServiceImpl userDemographyService = null;
 
     private UserDemographyServiceImpl() {
         this.userDemographyRepository = UserDemographyRepositoryImpl.getUserDemographyRepository();
     }
 
-    public static UserDemographyService getUserDemographyService() {
+    public static UserDemographyServiceImpl getUserDemographyService() {
         if (userDemographyService == null) userDemographyService = new UserDemographyServiceImpl();
         return userDemographyService;
     }
